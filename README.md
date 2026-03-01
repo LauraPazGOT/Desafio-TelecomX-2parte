@@ -105,6 +105,46 @@ Clientes con altos costos mensuales
 
 Estas acciones podrían reducir significativamente la tasa de cancelación.
 
+⚙️ Mejoras implementadas
+
+Este proyecto fue mejorado progresivamente aplicando buenas prácticas de machine learning y validación profesional de modelos:
+
+Split estratificado de datos
+Se utilizó stratify=y en la separación de entrenamiento y prueba para preservar la proporción real de churn en ambos conjuntos, evitando sesgos de evaluación.
+
+Modelo baseline (Dummy Classifier)
+Se incorporó un modelo de referencia que predice la clase más frecuente, permitiendo verificar que los modelos entrenados superan significativamente una predicción trivial.
+
+Escalado correcto de variables numéricas
+Se aplicó StandardScaler ajustado únicamente sobre el conjunto de entrenamiento, evitando data leakage y asegurando una evaluación válida.
+
+Optimización del modelo final
+Se mejoró la Regresión Logística utilizando class_weight="balanced" para compensar el desbalance de clases, aumentando significativamente la capacidad de detección de clientes en riesgo (recall).
+
+Comparación sistemática de modelos
+Se evaluaron múltiples algoritmos (Regresión Logística, Árbol de Decisión y Random Forest) utilizando métricas clave para problemas de churn:
+
+Recall (prioritario para retención)
+
+Precision
+
+F1-score
+
+Accuracy
+
+Interpretación de variables relevantes
+Se analizó la importancia de las variables mediante:
+
+coeficientes de Regresión Logística
+
+feature importance de Random Forest
+
+Esto permitió identificar factores clave de cancelación desde una perspectiva de negocio.
+
+Enfoque orientado a aplicación real
+El modelo final fue seleccionado priorizando la capacidad de detectar clientes en riesgo, alineado con objetivos reales de retención en telecomunicaciones.
+
+
 📁 Estructura del repositorio
 ├── DesafioTelecomX2parte.ipynb
 ├── datos_tratados.csv
@@ -117,3 +157,4 @@ Proyecto desarrollado por Laura Paz como parte del desafío de Ciencia de Datos 
 ⭐ Nota final
 
 Este proyecto demuestra cómo la ciencia de datos puede aplicarse para resolver problemas reales del negocio, permitiendo anticipar riesgos, optimizar decisiones y mejorar la retención de clientes.
+
